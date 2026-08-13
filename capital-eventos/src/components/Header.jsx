@@ -13,7 +13,10 @@ function Header() {
         <a href="#sobre">Sobre</a>
       </nav>
 
-      <button className="entrar">
+      <button
+        className="entrar"
+        onClick={() => alert("Área de login")}
+      >
         Entrar
       </button>
 
