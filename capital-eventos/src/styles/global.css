@@ -1,0 +1,350 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  color: #222;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* CABEÇALHO */
+
+.header {
+  height: 70px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 8%;
+
+  gap: 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #c2185b;
+}
+
+.logo span {
+  background-color: #c2185b;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.logo h2 {
+  font-size: 20px;
+}
+
+nav {
+  display: flex;
+  gap: 25px;
+  flex: 1;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.entrar {
+  background-color: white;
+
+  border: 1px solid #bbb;
+  border-radius: 20px;
+
+  padding: 8px 18px;
+}
+
+
+/* PARTE PRINCIPAL */
+
+main {
+  width: 90%;
+  max-width: 1200px;
+
+  margin: auto;
+}
+
+
+/* INTRODUÇÃO */
+
+.introducao {
+  text-align: center;
+
+  padding: 40px 0 20px;
+}
+
+.introducao h1 {
+  color: #c2185b;
+}
+
+.introducao p {
+  color: #555;
+}
+
+.busca {
+  width: 90%;
+  max-width: 900px;
+
+  padding: 14px 20px;
+
+  border: 1px solid #ccc;
+  border-radius: 25px;
+
+  font-size: 15px;
+}
+
+
+/* FILTROS */
+
+.filtros {
+  display: flex;
+
+  gap: 10px;
+
+  margin: 20px 0;
+
+  flex-wrap: wrap;
+}
+
+.filtro {
+  background-color: white;
+
+  border: 1px solid #c2185b;
+
+  color: #c2185b;
+
+  padding: 8px 16px;
+
+  border-radius: 20px;
+}
+
+.filtro:hover {
+  background-color: #fce4ec;
+}
+
+.filtro.selecionado {
+  background-color: #c2185b;
+  color: white;
+}
+
+
+/* CARDS */
+
+.lista {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+.card {
+  background-color: white;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 2px 7px #00000018;
+}
+
+.imagem {
+  height: 150px;
+
+  position: relative;
+}
+
+
+/* CORES DOS CARDS */
+
+.laranja {
+  background:
+    linear-gradient(
+      135deg,
+      #ff8a25,
+      #d83b26
+    );
+}
+
+.rosa {
+  background:
+    linear-gradient(
+      135deg,
+      #df2670,
+      #7b165f
+    );
+}
+
+.vermelho {
+  background:
+    linear-gradient(
+      135deg,
+      #ef4444,
+      #b91c1c
+    );
+}
+
+.roxo {
+  background:
+    linear-gradient(
+      135deg,
+      #8e197d,
+      #4a0759
+    );
+}
+
+
+/* CATEGORIA */
+
+.categoria {
+  position: absolute;
+
+  bottom: 10px;
+  left: 12px;
+
+  background-color: white;
+
+  color: #c2185b;
+
+  padding: 5px 10px;
+
+  border-radius: 15px;
+
+  font-size: 12px;
+
+  font-weight: bold;
+}
+
+
+/* FAVORITO */
+
+.favorito {
+  position: absolute;
+
+  right: 12px;
+  top: 12px;
+
+  border: none;
+
+  background-color: white;
+
+  color: #e11d48;
+
+  border-radius: 50%;
+
+  width: 34px;
+  height: 34px;
+
+  font-size: 22px;
+}
+
+
+/* CONTEÚDO DO CARD */
+
+.card-conteudo {
+  padding: 15px;
+}
+
+.card h2 {
+  font-size: 18px;
+}
+
+.card p {
+  color: #555;
+
+  font-size: 14px;
+}
+
+
+/* BOTÃO */
+
+.detalhes {
+  width: 100%;
+
+  border: none;
+
+  border-radius: 20px;
+
+  padding: 10px;
+
+  background-color: #c2185b;
+
+  color: white;
+
+  font-weight: bold;
+}
+
+.detalhes:hover {
+  background-color: #a3134d;
+}
+
+
+/* NENHUM EVENTO */
+
+.nenhum {
+  text-align: center;
+
+  padding: 30px;
+}
+
+
+/* SOBRE */
+
+.sobre {
+  text-align: center;
+
+  margin: 50px 0 30px;
+}
+
+.sobre h2 {
+  color: #c2185b;
+}
+
+
+/* RODAPÉ */
+
+footer {
+  text-align: center;
+
+  padding: 25px;
+
+  border-top: 1px solid #ddd;
+
+  color: #666;
+
+  margin-top: 30px;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 800px) {
+
+  .header {
+    padding: 0 4%;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .lista {
+    grid-template-columns: 1fr;
+  }
+}
