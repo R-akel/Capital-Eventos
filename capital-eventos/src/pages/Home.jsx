@@ -85,7 +85,7 @@ function Home() {
       <section className="introducao">
 
         <h1>
-          Encontre eventos em Palmas
+          Encontre os melhores eventos em Palmas
         </h1>
 
         <p>
