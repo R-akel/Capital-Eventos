@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Card from "../components/Card";
 
-function Home({ eventos, favoritos, onAbrir, onFavoritar }) {
+function Home({ eventos, favoritos, usuario, onAbrir, onFavoritar, onExcluir }) {
   const [categoria, setCategoria] = useState("Todos");
   const [busca, setBusca] = useState("");
   const categorias = ["Todos", "Cultural", "Esportivo", "Social", "Gastronômico"];
+  const emailUsuario = usuario?.email?.toLowerCase();
 
   const filtrados = eventos.filter(
     (evento) =>
@@ -48,6 +49,14 @@ function Home({ eventos, favoritos, onAbrir, onFavoritar }) {
             favorito={favoritos.includes(evento.id)}
             onDetalhes={() => onAbrir(evento)}
             onFavoritar={() => onFavoritar(evento.id)}
+            onExcluir={
+              usuario &&
+              (evento.organizadorEmail?.toLowerCase() === emailUsuario ||
+                (!evento.organizadorEmail &&
+                  evento.organizador?.toLowerCase() === emailUsuario.split("@")[0]))
+                ? () => onExcluir(evento)
+                : undefined
+            }
           />
         ))}
       </section>

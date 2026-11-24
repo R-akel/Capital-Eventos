@@ -9,7 +9,20 @@ function DetalhesEvento({ evento, favorito, onFavoritar, onVoltar }) {
 
       <section className="evento-detalhe">
         <div className={`capa-detalhe ${evento.cor}`}>
-          <span>{evento.categoria}</span>
+          {evento.imagem && (
+            <img src={evento.imagem} alt={`Foto ilustrativa de ${evento.nome}`} />
+          )}
+          <span className="categoria-detalhe">{evento.categoria}</span>
+          {evento.fonteImagem && (
+            <a
+              className="credito-foto credito-foto-detalhe"
+              href={evento.fonteImagem}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Foto: {evento.creditoImagem} · {evento.licencaImagem}
+            </a>
+          )}
         </div>
 
         <div>
@@ -20,6 +33,9 @@ function DetalhesEvento({ evento, favorito, onFavoritar, onVoltar }) {
           <div className="informacoes">
             <p>📅 <strong>Quando:</strong> {evento.data}</p>
             <p>📍 <strong>Onde:</strong> {evento.local}</p>
+            {evento.organizador && (
+              <p>👤 <strong>Organizado por:</strong> {evento.organizador}</p>
+            )}
           </div>
 
           <button className="detalhes acao-principal" onClick={() => onFavoritar(evento.id)}>

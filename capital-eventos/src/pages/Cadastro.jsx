@@ -49,7 +49,10 @@ function Cadastro({ onCadastrar, onLogin }) {
     try {
       await cadastrarUsuario({ nome: nome.trim(), email: email.trim(), senha });
       setSucesso(true);
-      onCadastrar(nome.trim().split(" ")[0]);
+      onCadastrar({
+        nome: nome.trim().split(" ")[0],
+        email: email.trim().toLowerCase(),
+      });
     } catch (erro) {
       setErroServidor(
         erro instanceof Error

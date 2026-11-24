@@ -23,3 +23,5 @@ Aplicação React com Vite para explorar eventos. O cadastro usa uma API PHP e u
 5. Abra o endereço mostrado pelo Vite (normalmente `http://localhost:5173`) e faça um cadastro. Os usuários ficam na tabela `usuarios`; a senha é salva como hash, nunca em texto puro.
 
 Esta configuração é somente para desenvolvimento local. O login ainda é simulado e a API de cadastro deve ser publicada em uma hospedagem com PHP antes de ser usada pelo site publicado.
+
+Usuários logados podem adicionar eventos pela opção **+ Adicionar evento** no cabeçalho. Esses eventos ficam salvos no `localStorage` do navegador e aparecem apenas nesse navegador; ainda não são gravados no MySQL nem compartilhados com outros usuários.

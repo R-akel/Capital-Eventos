@@ -8,14 +8,17 @@ function Header({ usuario, favoritos, onNavegar }) {
 
       <nav aria-label="Navegação principal">
         <button onClick={() => onNavegar("inicio")}>Eventos</button>
-        <button onClick={() => onNavegar("inicio")}>Categorias</button>
         <button onClick={() => onNavegar("favoritos")}>
           Favoritos
           {favoritos > 0 && <b>{favoritos}</b>}
         </button>
-        <button onClick={() => onNavegar("inicio")}>Sobre</button>
       </nav>
 
+      {usuario && (
+        <button className="novo-evento-link" onClick={() => onNavegar("novo-evento")}>
+          + Adicionar evento
+        </button>
+      )}
       <button className="entrar" onClick={() => onNavegar(usuario ? "conta" : "login")}>
         {usuario ? `Olá, ${usuario.nome}` : "Entrar"}
       </button>

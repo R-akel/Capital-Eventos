@@ -1,0 +1,65 @@
+.form-evento {
+  display: grid;
+  gap: 10px;
+  width: min(100%, 620px);
+  margin: 0 auto;
+  padding: 28px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 2px 12px #00000012;
+}
+
+.form-evento label {
+  margin-top: 8px;
+  color: #473f46;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.form-evento input,
+.form-evento select,
+.form-evento textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d9cbd1;
+  border-radius: 8px;
+  background: white;
+  color: #24202a;
+  outline-color: #c2185b;
+}
+
+.form-evento textarea {
+  resize: vertical;
+}
+
+.campos-data {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.campos-data > div {
+  display: grid;
+  gap: 10px;
+}
+
+.botoes-evento {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.botoes-evento .detalhes {
+  max-width: 220px;
+}
+
+@media (max-width: 520px) {
+  .form-evento {
+    padding: 20px;
+  }
+
+  .campos-data {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}

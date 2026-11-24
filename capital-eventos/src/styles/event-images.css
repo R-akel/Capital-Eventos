@@ -1,0 +1,59 @@
+.imagem {
+  height: 175px;
+  overflow: hidden;
+}
+
+.imagem > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.imagem .categoria {
+  top: 10px;
+  bottom: auto;
+}
+
+.credito-foto {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  max-width: calc(100% - 16px);
+  padding: 4px 6px;
+  border-radius: 6px;
+  background: rgb(255 255 255 / 92%);
+  color: #24202a;
+  font-size: 10px;
+  line-height: 1.3;
+  text-align: right;
+  text-decoration: none;
+}
+
+.credito-foto:hover {
+  text-decoration: underline;
+}
+
+.capa-detalhe {
+  position: relative;
+  overflow: hidden;
+}
+
+.capa-detalhe > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.capa-detalhe .categoria-detalhe {
+  position: relative;
+  z-index: 1;
+}
+
+.credito-foto-detalhe {
+  z-index: 1;
+}

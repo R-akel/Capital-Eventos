@@ -33,7 +33,11 @@ function Login({ onEntrar, onCadastro }) {
       setSucesso(true);
 
       // Temporário: o PHP fará a autenticação real.
-      onEntrar(email.trim().split("@")[0]);
+      const emailNormalizado = email.trim().toLowerCase();
+      onEntrar({
+        nome: emailNormalizado.split("@")[0],
+        email: emailNormalizado,
+      });
     }
   }
 
