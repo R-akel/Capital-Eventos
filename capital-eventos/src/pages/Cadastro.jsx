@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { cadastrarUsuario } from "../services/api";
 
 function Cadastro({ onCadastrar, onLogin }) {
   const [nome, setNome] = useState("");
@@ -8,6 +9,8 @@ function Cadastro({ onCadastrar, onLogin }) {
 
   const [erros, setErros] = useState({});
   const [sucesso, setSucesso] = useState(false);
+  const [erroServidor, setErroServidor] = useState("");
+  const [enviando, setEnviando] = useState(false);
 
   function validar() {
     const e = {};
@@ -22,21 +25,39 @@ function Cadastro({ onCadastrar, onLogin }) {
 
     if (senha.length < 6) {
       e.senha = "Senha: mínimo 6 caracteres.";
+    } else if (new TextEncoder().encode(senha).length > 72) {
+      e.senha = "Senha: máximo 72 bytes.";
     }
 
     return e;
   }
 
-  function enviar(evento) {
+  async function enviar(evento) {
     evento.preventDefault();
 
     const encontrados = validar();
     setErros(encontrados);
     setSucesso(false);
+    setErroServidor("");
 
-    if (Object.keys(encontrados).length === 0) {
+    if (Object.keys(encontrados).length > 0) {
+      return;
+    }
+
+    setEnviando(true);
+
+    try {
+      await cadastrarUsuario({ nome: nome.trim(), email: email.trim(), senha });
       setSucesso(true);
       onCadastrar(nome.trim().split(" ")[0]);
+    } catch (erro) {
+      setErroServidor(
+        erro instanceof Error
+          ? erro.message
+          : "Não foi possível realizar o cadastro. Tente novamente.",
+      );
+    } finally {
+      setEnviando(false);
     }
   }
 
@@ -84,7 +105,7 @@ function Cadastro({ onCadastrar, onLogin }) {
           type="password"
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
-          placeholder="Mínimo 6 caracteres"
+          placeholder="De 6 a 72 bytes"
           aria-invalid={Boolean(erros.senha)}
           aria-describedby={erros.senha ? "cad-erro-senha" : undefined}
         />
@@ -94,13 +115,18 @@ function Cadastro({ onCadastrar, onLogin }) {
           </p>
         )}
 
-        <button className="detalhes" type="submit">
-          Criar conta
+        <button className="detalhes" type="submit" disabled={enviando}>
+          {enviando ? "Salvando..." : "Criar conta"}
         </button>
+        {erroServidor && (
+          <p className="erro" role="alert">
+            {erroServidor}
+          </p>
+        )}
 
         {sucesso && (
           <p className="sucesso" role="status">
-            Dados válidos! Cadastro simulado com sucesso.
+            Cadastro realizado com sucesso.
           </p>
         )}
 
